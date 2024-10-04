@@ -1,0 +1,669 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+{% if test %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- order-card start -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card 
+                    {% if csp == 'Connected' %} bg-c-green  {% else %}  bg-c-red {% endif %}                    
+                    order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Controller Status</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-eye float-start"></i><span>{{csp}}</span>
+                            </h2>
+                            <p class="m-b-0">
+                                {% if csp == 'Connected' %} Running on 127.0.01:5050  {% else %} Could not connect to the controller  {% endif %} 
+                                
+                                <span class="float-end"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-blue order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Nodes Connected</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-shuffle float-start"></i><span>
+                                {% if connected_devices %} {{connected_devices}} {% else %}  {{0}}{% endif %}
+                            </span></h2>
+                            <p class="m-b-0">Total nodes in the network <span class="float-end">9</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card 
+                    {% if connected_devices and connected_devices > 0 %} bg-c-green  {% else %}  bg-c-yellow {% endif %}                       
+                    order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Nodes Control</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-shuffle float-start"></i><span>
+                                <a href="http://127.0.01:5050/start" class="btn btn-primary btn-sm btn-round 
+                                {% if connected_devices and connected_devices > 0 %} disabled {% endif %}            
+                                ">Connect</a>
+                            </span>
+                            </h2>
+                            <p class="m-b-0">
+                                {% if connected_devices and connected_devices > 0 %} Nodes connected.  {% else %}  Try to connect to the nodes in the network. {% endif %}  
+                                  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-yellow order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Functions Control</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-shuffle float-start"></i><span>
+                                <a href="http://127.0.01:5050/install" class="btn btn-primary btn-sm btn-round">Install</a>
+                            </span>
+                            </h2>
+                            <p class="m-b-0">
+                                Install functions to the nodes. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    {% if "connected_devices" %} {{connected_devices}}  {% else %}  {{"connection lost" }}{% endif %}
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-green order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Total Sales</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-tag float-start"></i><span>1641</span>
+                            </h2>
+                            <p class="m-b-0">This Month<span class="float-end">213</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-yellow order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Revenue</h6>
+                            <h2 class="text-end text-white"><i
+                                    class="feather icon-repeat float-start"></i><span>$42,562</span></h2>
+                            <p class="m-b-0">This Month<span class="float-end">$5,032</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-red order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Total Profit</h6>
+                            <h2 class="text-end text-white"><i
+                                    class="feather icon-award float-start"></i><span>$9,562</span></h2>
+                            <p class="m-b-0">This Month<span class="float-end">$542</span></p>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!-- order-card end -->
+                <!-- users visite start -->
+            </div>
+
+                            <!-- Customer overview start -->
+                            <div class="col-md-12">
+                                <div class="card table-card">
+                                    <div class="card-header">
+                                        <h5>Asset Discovery Service (GOOSE Traffic)</h5>
+                                        <div class="card-header-right">
+                                            <div class="btn-group card-option">
+                                                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="feather icon-more-horizontal"></i>
+                                                </button>
+                                                <ul class="list-unstyled card-option dropdown-menu dropdown-menu-end">
+                                                    <li class="dropdown-item full-card"><a href="#"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                                                    <li class="dropdown-item minimize-card"><a href="#"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                                                    <li class="dropdown-item reload-card"><a href="#"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                                                    <li class="dropdown-item close-card"><a href="#"><i class="feather icon-trash"></i> remove</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-pills nav-fill mt-3 border-bottom pb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="feather icon-shuffle m-r-5"></i> DPS HV</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="feather icon-shuffle m-r-5"></i> DPS RS</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="feather icon-shuffle m-r-5"></i> DPS MV</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-news-tab" data-bs-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="false"><i class="feather icon-shuffle m-r-5"></i> DPS DSS2 GW</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                                <div class="table-responsive">
+                                                    <div class="customer-scroll" style="height:300px;position:relative;"> <!-- 362px -->
+                                                        <table class="table table-hover m-b-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><span>IED</span></th>
+                                                                    <th><span>Vendor <a class="help" data-toggle="popover" title="Based on MAC address" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Messages <a class="help" data-toggle="popover" title="Total number of messages" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Bytes <a class="help" data-toggle="popover" title="Total number of bytes" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>                                                                    
+                                                                        {% if AD_DPSHV %} 
+                                                                        
+                                                                            {% for entry in AD_DPSHV %}
+                                                                                {% for key in AD_DPSHV[entry].keys() %}
+                                                                                <tr>                                                                                                                                                                      
+                                                                                            <td> 
+                                                                                                {{key.upper()}}
+                                                                                            </td> 
+                                                                                            <td> 
+                                                                                                {% if "B4B15A" in key.upper() %}
+                                                                                                    Siemens
+
+                                                                                                 {% elif "30B216" in key.upper() %} 
+                                                                                                    Hitachi
+                                                                                                {% else %}   
+                                                                                                    <div style="color:red"> Unknown device! </div>
+                                                                                                {% endif %}
+                                                                                            </td> 
+                                                                                            <td> 
+                                                                                                
+                                                                                                {{AD_DPSHV[entry][key].split(",")[0]}}
+                                                                                            </td> 
+                                                                                            <td> 
+                                                                                                {{AD_DPSHV[entry][key].split(",")[1]}}
+                                                                                            </td>
+                                                                                </tr> 
+                                                                                {% endfor %}   
+
+                                                                                <!--{% if entry  %} {{asset_discovery}}   {% else %}  No traffic detected {% endif %} 
+                                                                                <h4>{{entry}}: {{asset_discovery[entry]}}</h4>-->
+                                                                            {% endfor %}   
+
+                                                                        {% else %}   
+                                                                            <tr>
+                                                                                <td colspan="4">No traffic detected</td>
+                                                                            </tr> 
+                                                                        {% endif %}                                                                          
+                                                                </tr>                                    
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                <div class="table-responsive">
+                                                    <div class="customer-scroll1" style="height:362px;position:relative;">
+                                                        <table class="table table-hover m-b-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><span>IED</span></th>
+                                                                    <th><span>Vendor <a class="help" data-toggle="popover" title="Based on MAC address" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Messages <a class="help" data-toggle="popover" title="Total number of messages" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Bytes <a class="help" data-toggle="popover" title="Total number of bytes" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>                                                                    
+                                                                    {% if AD_DPSRS %} 
+                                                                    
+                                                                        {% for entry in AD_DPSRS %}
+                                                                            {% for key in AD_DPSRS[entry].keys() %}
+                                                                            <tr>                                                                                                                                                                      
+                                                                                        <td> 
+                                                                                            {{key.upper()}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {% if "B4B15A" in key.upper() %}
+                                                                                                Siemens
+
+                                                                                             {% elif "30B216" in key.upper() %} 
+                                                                                                Hitachi
+                                                                                            {% else %}   
+                                                                                                <div style="color:red"> Unknown device! </div>
+                                                                                            {% endif %}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            
+                                                                                            {{AD_DPSRS[entry][key].split(",")[0]}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {{AD_DPSRS[entry][key].split(",")[1]}}
+                                                                                        </td>
+                                                                            </tr> 
+                                                                            {% endfor %}   
+
+                                                                            <!--{% if entry  %} {{asset_discovery}}   {% else %}  No traffic detected {% endif %} 
+                                                                            <h4>{{entry}}: {{asset_discovery[entry]}}</h4>-->
+                                                                        {% endfor %}   
+
+                                                                    {% else %}   
+                                                                        <tr>
+                                                                            <td colspan="4">No traffic detected</td>
+                                                                        </tr> 
+                                                                    {% endif %}                                                                          
+                                                            </tr>                                                                 
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                                <div class="table-responsive">
+                                                    <div class="customer-scroll2" style="height:362px;position:relative;">
+                                                        <table class="table table-hover m-b-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><span>IED</span></th>
+                                                                    <th><span>Vendor <a class="help" data-toggle="popover" title="Based on MAC address" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Messages <a class="help" data-toggle="popover" title="Total number of messages" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Bytes <a class="help" data-toggle="popover" title="Total number of bytes" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>                                                                    
+                                                                    {% if AD_DPSMV %} 
+                                                                    
+                                                                        {% for entry in AD_DPSMV %}
+                                                                            {% for key in AD_DPSMV[entry].keys() %}
+                                                                            <tr>                                                                                                                                                                      
+                                                                                        <td> 
+                                                                                            {{key.upper()}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {% if "B4B15A" in key.upper() %}
+                                                                                                Siemens
+
+                                                                                             {% elif "30B216" in key.upper() %} 
+                                                                                                Hitachi
+                                                                                            {% else %}   
+                                                                                                <div style="color:red"> Unknown device! </div>
+                                                                                            {% endif %}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            
+                                                                                            {{AD_DPSMV[entry][key].split(",")[0]}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {{AD_DPSMV[entry][key].split(",")[1]}}
+                                                                                        </td>
+                                                                            </tr> 
+                                                                            {% endfor %}   
+
+                                                                            <!--{% if entry  %} {{asset_discovery}}   {% else %}  No traffic detected {% endif %} 
+                                                                            <h4>{{entry}}: {{asset_discovery[entry]}}</h4>-->
+                                                                        {% endfor %}   
+
+                                                                    {% else %}   
+                                                                        <tr>
+                                                                            <td colspan="4">No traffic detected</td>
+                                                                        </tr> 
+                                                                    {% endif %}                                                                          
+                                                            </tr>                                                                 
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab">
+                                                <div class="table-responsive">
+                                                    <div class="customer-scroll3" style="height:362px;position:relative;">
+                                                        <table class="table table-hover m-b-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><span>IED</span></th>
+                                                                    <th><span>Vendor <a class="help" data-toggle="popover" title="Based on MAC address" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Messages <a class="help" data-toggle="popover" title="Total number of messages" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                    <th><span>Bytes <a class="help" data-toggle="popover" title="Total number of bytes" data-content="And here's some amazing content. It's very engaging. Right?"><i class="feather icon-help-circle f-16"></i></a></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>                                                                    
+                                                                    {% if AD_DSS2GW %} 
+                                                                    
+                                                                        {% for entry in AD_DSS2GW %}
+                                                                            {% for key in AD_DSS2GW[entry].keys() %}
+                                                                            <tr>                                                                                                                                                                      
+                                                                                        <td> 
+                                                                                            {{key.upper()}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {% if "B4B15A" in key.upper() %}
+                                                                                                Siemens
+
+                                                                                             {% elif "30B216" in key.upper() %} 
+                                                                                                Hitachi
+                                                                                            {% else %}   
+                                                                                                <div style="color:red"> Unknown device! </div>
+                                                                                            {% endif %}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            
+                                                                                            {{AD_DSS2GW[entry][key].split(",")[0]}}
+                                                                                        </td> 
+                                                                                        <td> 
+                                                                                            {{AD_DSS2GW[entry][key].split(",")[1]}}
+                                                                                        </td>
+                                                                            </tr> 
+                                                                            {% endfor %}   
+
+                                                                            <!--{% if entry  %} {{asset_discovery}}   {% else %}  No traffic detected {% endif %} 
+                                                                            <h4>{{entry}}: {{asset_discovery[entry]}}</h4>-->
+                                                                        {% endfor %}   
+
+                                                                    {% else %}   
+                                                                        <tr>
+                                                                            <td colspan="4">No traffic detected</td>
+                                                                        </tr> 
+                                                                    {% endif %}                                                                          
+                                                            </tr>                                  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Customer overview end -->
+
+            				<div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Log</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- {% if log %} {{log}}   {% else %}  No log data {% endif %} -->
+
+                                        {% for entry in log %}
+                                            <h4>{{entry}}: {{log[entry]}}</h4>
+                                        {% endfor %} 
+                                        <!--
+                                        <h1>This is a Heading 1</h1>
+                                        <p class="text-muted mb-4">Suspendisse vel quam malesuada, aliquet sem sit amet, fringilla elit. Morbi tempor tincidunt tempor. Etiam id turpis viverra, vulputate sapien nec, varius sem. Curabitur
+                                            ullamcorper fringilla eleifend. In ut eros hendrerit est consequat posuere et at velit.</p>
+                                        <div class="clearfix"></div>
+                                        <h2>This is a Heading 2</h2>
+                                        <p class="text-muted mb-4">In nec rhoncus eros. Vestibulum eu mattis nisl. Quisque viverra viverra magna nec pulvinar. Maecenas pellentesque porta augue, consectetur facilisis diam porttitor sed.
+                                            Suspendisse tempor est sodales augue rutrum tincidunt. Quisque a malesuada purus.</p>
+                                        <div class="clearfix"></div>
+                                        <h3>This is a Heading 3</h3>
+                                        <p class="text-muted mb-4">Vestibulum auctor tincidunt semper. Phasellus ut vulputate lacus. Suspendisse ultricies mi eros, sit amet tempor nulla varius sed. Proin nisl nisi, feugiat quis bibendum vitae,
+                                            dapibus in tellus.</p>
+                                        <div class="clearfix"></div>
+                                        <h4>This is a Heading 4</h4>
+                                        <p class="text-muted mb-4">Nulla et mattis nunc. Curabitur scelerisque commodo condimentum. Mauris blandit, velit a consectetur egestas, diam arcu fermentum justo, eget ultrices arcu eros vel erat.</p>
+                                        <div class="clearfix"></div>
+                                        <h5>This is a Heading 5</h5>
+                                        <p class="text-muted mb-4">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam mattis dictum aliquet. Nulla sapien mauris, eleifend et
+                                            sem ac, commodo dapibus odio. Vivamus pretium nec odio cursus elementum. Suspendisse molestie ullamcorper ornare.
+                                        </p>
+                                        <div class="clearfix"></div>
+                                        <h6>This is a Heading 6</h6>
+                                        <p class="text-muted mb-0">Donec ultricies, lacus id tempor condimentum, orci leo faucibus sem, a molestie libero lectus ac justo. ultricies mi eros, sit amet tempor nulla varius sed. Proin nisl nisi,
+                                            feugiat quis bibendum vitae, dapibus in tellus.
+                                        </p>
+                                        -->
+                                    </div>
+                                </div>
+                            </div>
+            <!--                
+            <div class="row">
+                <div class="col-md-12 col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Substation Traffic</h5>
+                        </div>
+                        <div class="card-body ps-0 pb-0">
+                            <div id="unique-visitor-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-6">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body bg-patern">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span>Messages (Primary Substation)</span>
+                                        </div>
+                                        <div class="col text-end">
+                                            <h2 class="mb-0">826</h2>
+                                            <span class="text-c-green">8.2%<i class="feather icon-trending-up ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <div id="customer-chart"></div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <h3 class="m-0"><i class="fas fa-circle f-10 m-r-5 text-success"></i>674</h3>
+                                            <span class="ms-3">GOOSE</span>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="m-0"><i class="fas fa-circle text-primary f-10 m-r-5"></i>182</h3>
+                                            <span class="ms-3">SV</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body bg-patern-white">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span>Messages (Secondary Substation)</span>
+                                        </div>
+                                        <div class="col text-end">
+                                            <h2 class="mb-0 text-white">826</h2>
+                                            <span class="text-white">5.2%<i class="feather icon-trending-up ms-1"></i></span>
+                                        </div>
+                                    </div>
+                                    <div id="customer-chart1"></div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <h3 class="m-0 text-white"><i class="fas fa-circle f-10 m-r-5 text-success"></i>674</h3>
+                                            <span class="ms-3">IEC 104</span>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="m-0 text-white"><i class="fas fa-circle f-10 m-r-5 text-white"></i>182</h3>
+                                            <span class="ms-3">Other</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!-- users visite end -->
+
+
+                <!-- social statustic start -->
+                <!--
+                <div class="col-md-12 col-lg-4">
+                    <div class="card seo-card overflow-hidden">
+                        <div class="card-body seo-statustic">
+                            <i class="feather icon-save f-20 text-c-red"></i>
+                            <h5 class="mb-1">65%</h5>
+                            <p>Memory</p>
+                        </div>
+                        <div class="seo-chart">
+                            <div id="seo-card1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fa fa-envelope-open text-c-blue d-block f-40"></i>
+                            <h4 class="m-t-20"><span class="text-c-blue">8.62k</span> Subscribers</h4>
+                            <p class="m-b-20">Your main list is growing</p>
+                            <button class="btn btn-primary btn-sm btn-round">Manage List</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fab fa-twitter text-c-green d-block f-40"></i>
+                            <h4 class="m-t-20"><span class="text-c-blgreenue">+40</span> Followers</h4>
+                            <p class="m-b-20">Your main list is growing</p>
+                            <button class="btn btn-success btn-sm btn-round">Check them out</button>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!-- social statustic end -->
+                <!-- account-section start -->
+                <!-- 
+                <div class="col-lg-4 col-md-12">
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <h6>Conversions</h6>
+                            <h4 class="m-0">0.85%<span class="text-c-blue ms-2"><i class="feather icon-arrow-up"></i>0.50%</span></h4>
+                            <span>Purchased</span>
+                        </div>
+                        <div id="coversions-chart1"></div>
+                    </div>
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <h6>Conversions</h6>
+                            <h4 class="m-0">0.85%<span class="text-c-green ms-2"><i class="feather icon-arrow-up"></i>0.50%</span></h4>
+                            <span>Purchased</span>
+                        </div>
+                        <div id="coversions-chart2"></div>
+                    </div>
+                    <div class="card overflow-hidden">
+                        <div class="card-body">
+                            <h6>Conversions</h6>
+                            <h4 class="m-0">0.85%<span class="text-c-red ms-2"><i class="feather icon-arrow-up"></i>0.50%</span></h4>
+                            <span>Purchased</span>
+                        </div>
+                        <div id="coversions-chart4"></div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Activity Feed</h5>
+                            <div class="card-header-right">
+                                <div class="btn-group card-option">
+                                    <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="feather icon-more-horizontal"></i>
+                                    </button>
+                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-end">
+                                        <li class="dropdown-item full-card"><a href="#"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                                        <li class="dropdown-item minimize-card"><a href="#"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                                        <li class="dropdown-item reload-card"><a href="#"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                                        <li class="dropdown-item close-card"><a href="#"><i class="feather icon-trash"></i> remove</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="feed-blog ps-0">
+                                <li class="active-feed">
+                                    <div class="feed-user-img">
+                                        <img src="/static/assets/images/user/avatar-4.jpg" class="img-radius " alt="User-Profile-Image">
+                                    </div>
+                                    <h6><span class="badge bg-danger">File</span> Eddie uploaded new files: <small class="text-muted">2 hours ago</small></h6>
+                                    <p class="m-b-15 m-t-15">hii <b> @everone</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                    <div class="row">
+                                        <div class="col-auto text-center">
+                                            <img src="/static/assets/images/gallery-grid/img-grd-gal-1.jpg" alt="img" class="img-fluid wid-100">
+                                            <h6 class="m-t-15 m-b-0">Old Scooter</h6>
+                                            <p class="text-muted m-b-0"><small>PNG-100KB</small></p>
+                                        </div>
+                                        <div class="col-auto text-center">
+                                            <img src="/static/assets/images/gallery-grid/img-grd-gal-2.jpg" alt="img" class="img-fluid wid-100">
+                                            <h6 class="m-t-15 m-b-0">Wall Art</h6>
+                                            <p class="text-muted m-b-0"><small>PNG-150KB</small></p>
+                                        </div>
+                                        <div class="col-auto text-center">
+                                            <img src="/static/assets/images/gallery-grid/img-grd-gal-3.jpg" alt="img" class="img-fluid wid-100">
+                                            <h6 class="m-t-15 m-b-0">Microphone</h6>
+                                            <p class="text-muted m-b-0"><small>PNG-150KB</small></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="diactive-feed">
+                                    <div class="feed-user-img">
+                                        <img src="/static/assets/images/user/avatar-4.jpg" class="img-radius " alt="User-Profile-Image">
+                                    </div>
+                                    <h6><span class="badge bg-success">Task</span> Sarah marked the Pending Review: <span class="text-c-green"> Trash Can Icon Design</span><small class="text-muted"> 2 hours ago</small></h6>
+                                </li>
+                                <li class="diactive-feed">
+                                    <div class="feed-user-img">
+                                        <img src="/static/assets/images/user/avatar-4.jpg" class="img-radius " alt="User-Profile-Image">
+                                    </div>
+                                    <h6><span class="badge bg-primary">comment</span> abc posted a task: <span class="text-c-green">Design a new Homepage</span> <small class="text-muted">6 hours ago</small></h6>
+                                    <p class="m-b-15 m-t-15">hii <b> @everone</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <!-- account-section end -->
+            <!--
+            </div>
+            -->
+            
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% else %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- order-card start -->
+                <div class="col-md-6 col-xl-3">
+                    <div class="card bg-c-blue order-card">
+                        <div class="card-body">
+                            <h6 class="text-white">Service Provider Status</h6>
+                            <h2 class="text-end text-white"><i class="feather icon-shuffle float-start"></i><span></span></h2>
+                            <p class="m-b-0">Could not connect to the service provider<span class="float-end"></span></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% endif %}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+    <!-- Apex Chart -->
+    <script src="/static/assets/js/plugins/apexcharts.min.js"></script>
+
+    <!-- custom-chart js -->
+    <script src="/static/assets/js/pages/dashboard-main.js"></script>
+
+{% endblock javascripts %}

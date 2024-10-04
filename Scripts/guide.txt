@@ -1,0 +1,12 @@
+Start the Dashboard 
+For the VM version 240613, use this docker command: 
+cd ~/Dashboard/;sudo docker-compose up --build
+
+For the VM version 241001, use this virtual env command: 
+cd ~/Dashboard/;source env/bin/activate;flask run
+
+Start the Service Broker
+cd ~/BPFabric/controller/;./service_broker.py
+
+Start the Smart Grid topology
+cd ~/SmartGridSim/;./StartSGFabric.sh

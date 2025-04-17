@@ -1,0 +1,3 @@
+This contains GOOSE encryption experiment files and links... 
+
+TODO

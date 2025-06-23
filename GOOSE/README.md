@@ -11,21 +11,21 @@ git clone https://github.com/kylemc1935/GOOSE-encryption
 
 # Configuration
 Start softswitch: 
-sudo ip link add veth1 type veth peer name veth2
-sudo ip link add veth3 type veth peer name veth4
-sudo ip link set dev veth1 up
-sudo ip link set dev veth2 up
-sudo ip link set dev veth3 up
-sudo ip link set dev veth4 up
-sudo ~/BPFabric/softswitch/softswitch --dpid=1 --controller="127.0.0.1:9000" --promiscuous veth1 veth3 enp1s0 enp2s0 enp3s0 
+sudo ip link add veth1 type veth peer name veth2  
+sudo ip link add veth3 type veth peer name veth4  
+sudo ip link set dev veth1 up  
+sudo ip link set dev veth2 up  
+sudo ip link set dev veth3 up  
+sudo ip link set dev veth4 up  
+sudo ~/BPFabric/softswitch/softswitch --dpid=1 --controller="127.0.0.1:9000" --promiscuous veth1 veth3 enp1s0 enp2s0 enp3s0  
 
-Start controller: 
-cd ~/BPFabric/controller/
-./cli.py
+Start controller:  
+cd ~/BPFabric/controller/  
+./cli.py  
 
-Install the eBPF function from the controller: 
-1 add 0 goose_forwarder ../functions/goose_forwarder.o
+Install the eBPF function from the controller:  
+1 add 0 goose_forwarder ../functions/goose_forwarder.o  
 
-Start GEDSF on both switches: 
-./c_switch_handle_S1
-./c_switch_handle_S2
+Start GEDSF on both switches:  
+./c_switch_handle_S1  
+./c_switch_handle_S2  

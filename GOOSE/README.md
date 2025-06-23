@@ -10,7 +10,7 @@ Setup of the GOOSE encryption project:
 git clone https://github.com/kylemc1935/GOOSE-encryption  
 
 # Configuration
-Start softswitch: 
+Start softswitch:  
 sudo ip link add veth1 type veth peer name veth2  
 sudo ip link add veth3 type veth peer name veth4  
 sudo ip link set dev veth1 up  

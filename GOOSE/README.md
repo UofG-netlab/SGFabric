@@ -2,7 +2,7 @@
 
 This project contains in-network GOOSE encryption with eBPF-based programmable network architecture as described in the paper:  
 
-TODO CITE  
+F. Holik, K. Mcilwraith, A. A. Shah and D. P. Pezaros, "In-Network GOOSE Encryption with eBPF-based Programmable Network Architecture," 2025 IEEE International Conference on Communications, Control, and Computing Technologies for Smart Grids (SmartGridComm), North York, ON, Canada, 2025, pp. 1-6, doi: 10.1109/SmartGridComm65349.2025.11204611. 
 
 # Installation
 BPFabric installation according to the instructions  

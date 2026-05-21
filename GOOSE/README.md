@@ -9,11 +9,12 @@ BPFabric installation according to the instructions
 Setup of the GOOSE encryption project:  
 git clone https://github.com/kylemc1935/GOOSE-encryption  
 Follow the install instructions 
-Dependencies: sudo apt install cmake libsodium-dev libsodium23 libpcap-dev
+Dependencies: sudo apt install cmake libsodium-dev libsodium23 libpcap-dev  
 
-Replace the c_switch_handle_S* files in the /src/mininet_setup folder
-build the project: ./build.sh
-Executable files are now in the /build folder 
+Replace the c_switch_handle_S* files in the /src/mininet_setup folder   
+Adjust the paths in the files (lines 9-10)   
+build the project: ./build.sh  
+Executable files are now in the /build folder   
 
 # Configuration
 Start softswitch:  
@@ -33,5 +34,5 @@ Install the eBPF function from the controller:
 1 add 0 goose_forwarder ../functions/goose_forwarder.o  
 
 Start GEDSF on both switches (build folder):  
-./c_switch_handle_S1  
-./c_switch_handle_S2  
+./switch1  
+./switch2  

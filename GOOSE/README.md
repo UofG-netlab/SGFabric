@@ -8,6 +8,12 @@ F. Holik, K. Mcilwraith, A. A. Shah and D. P. Pezaros, "In-Network GOOSE Encrypt
 BPFabric installation according to the instructions  
 Setup of the GOOSE encryption project:  
 git clone https://github.com/kylemc1935/GOOSE-encryption  
+Follow the install instructions 
+Dependencies: sudo apt install cmake libsodium-dev libsodium23 libpcap-dev
+
+Replace the c_switch_handle_S* files in the /src/mininet_setup folder
+build the project: ./build.sh
+Executable files are now in the /build folder 
 
 # Configuration
 Start softswitch:  
@@ -26,6 +32,6 @@ cd ~/BPFabric/controller/
 Install the eBPF function from the controller:  
 1 add 0 goose_forwarder ../functions/goose_forwarder.o  
 
-Start GEDSF on both switches:  
+Start GEDSF on both switches (build folder):  
 ./c_switch_handle_S1  
 ./c_switch_handle_S2  
